@@ -14,7 +14,7 @@ function App() {
      
       return {
         ...pevState,
-        projects : [...prevState,newProject]
+        selectedProjectId : null,
         
       }
     });
@@ -26,16 +26,16 @@ function App() {
     }
     setProjectState(prev=>{
       return {
-        ...projectState.projects,newProject,
+        ...prev,projects: [...projectState.projects,newProject]
       }
     })
   }
-
+  console.log(projectState);
   let content;
 
   if(projectState.selectedProjectId === null){
     
-    content = <NewProject/>
+    content = <NewProject onAdd={handleAddProject}/>
   }
   else{
     content = <NoProjectsSelected onStartAddProjects = {handleStartAddProject}/>

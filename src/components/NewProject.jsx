@@ -3,20 +3,21 @@ import Input from './input';
 import { useRef } from 'react';
 function NewProject({onAdd}) {
     const title = useRef();
-    const desc = useRef();
+    const description = useRef();
     const dueDate = useRef();
 
    function handleSave(){
-        const enteredTitle = title.current.value;
-        const desc = title.current.value;
-        const dueDate = title.current.value;
+        const enteredTitleValue = title.current.value;
+        const descValue = description.current.value;
+        const dueDatevalue = dueDate.current.value;
 
         //vadidation
+        console.log(enteredTitleValue,descValue,dueDatevalue);
 
         onAdd({
-            title   : enteredTitle,
-            description : desc,
-            dueDate : dueDate
+            title   : enteredTitleValue,
+            description : descValue,
+            dueDate : dueDatevalue
         })
     }
 
@@ -29,7 +30,7 @@ function NewProject({onAdd}) {
         </menu>
         <div>
         <Input ref = {title} label = "Title"/>
-        <Input ref = {desc} label = "Description" textarea/> 
+        <Input ref = {description} label = "Description" textarea/> 
         <Input ref = {dueDate} label = "Due Date"/>
         </div>
     </div>
