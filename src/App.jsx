@@ -43,7 +43,7 @@ function App() {
   }
 
   const selectedProject = projectState.projects.find(project=>project.id === projectState.selectedProjectId);
-  let content = <SelectedProject project = {selectedProject}/>
+  let content = <SelectedProject onDelete = {handleDeleteProject} project = {selectedProject}/>
 
   if(projectState.selectedProjectId === null){
     
@@ -57,6 +57,15 @@ function App() {
     setProjectState(prev=>{
       return {
         ...prev,selectedProjectId : projectId
+      }
+    })
+  }
+
+  function handleDeleteProject(){
+    setProjectState(prev=>{
+      return {
+        ...prev,selectedProjectId : undefined,
+        projects : prev.projects.filter(project=>project.id !== prev.selectedProjectId)
       }
     })
   }
