@@ -2,7 +2,7 @@ import React from 'react'
 import Input from './input';
 import { useRef } from 'react';
 import Modal from './Modal';
-function NewProject({onAdd}) {
+function NewProject({onAdd,onCancel}) {
     const modaref = useRef();
     const title = useRef();
     const description = useRef();
@@ -36,7 +36,7 @@ function NewProject({onAdd}) {
     <Modal buttonCaption = "Okay" ref = {modaref}><h2 className='text-xl font-bold text-stone-500 mt-4 my-4'>Invalid Input</h2> <p className='mt-8'>Oops.... looks like you forgot to enter a value</p> <p>Please make sure you provide a valid value for every input field</p> </Modal>
     <div className='w-[35rem] mt-16'>
         <menu className='flex items-center justify-end gap-4 my-4'>
-            <li><button className='text-stone-800 hover:text-stone-950'>Cancel</button></li>
+            <li><button onClick = {onCancel} className='text-stone-800 hover:text-stone-950'>Cancel</button></li>
             <li><button onClick={handleSave} className='px-6 py-2 rounded-md text-stone-50 bg-stone-800 hover:bg-stone-950'>Save</button></li>
         </menu>
         <div>
