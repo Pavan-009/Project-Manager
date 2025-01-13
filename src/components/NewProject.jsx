@@ -1,7 +1,9 @@
 import React from 'react'
 import Input from './input';
 import { useRef } from 'react';
+import Modal from './Modal';
 function NewProject({onAdd}) {
+    const modaref = useRef();
     const title = useRef();
     const description = useRef();
     const dueDate = useRef();
@@ -11,7 +13,14 @@ function NewProject({onAdd}) {
         const descValue = description.current.value;
         const dueDatevalue = dueDate.current.value;
 
-        //vadidation
+        //vadidation;
+
+        if(enteredTitleValue.trim().length === 0 || descValue.trim().length === 0 || dueDatevalue.trim().length === 0){
+            //show error
+            modaref.current.open();
+            return
+        }
+
         console.log(enteredTitleValue,descValue,dueDatevalue);
 
         onAdd({
@@ -23,6 +32,8 @@ function NewProject({onAdd}) {
 
 
   return (
+    <>
+    <Modal buttonCaption = "Okay" ref = {modaref}><h2 className='text-xl font-bold text-stone-500 mt-4 my-4'>Invalid Input</h2> <p className='mt-8'>Oops.... looks like you forgot to enter a value</p> <p>Please make sure you provide a valid value for every input field</p> </Modal>
     <div className='w-[35rem] mt-16'>
         <menu className='flex items-center justify-end gap-4 my-4'>
             <li><button className='text-stone-800 hover:text-stone-950'>Cancel</button></li>
@@ -31,9 +42,10 @@ function NewProject({onAdd}) {
         <div>
         <Input ref = {title} label = "Title"/>
         <Input ref = {description} label = "Description" textarea/> 
-        <Input ref = {dueDate} label = "Due Date"/>
+        <Input type = 'date' ref = {dueDate} label = "Due Date"/>
         </div>
     </div>
+    </>
   )
 }
 
