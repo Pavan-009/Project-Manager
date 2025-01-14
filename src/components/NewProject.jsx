@@ -21,8 +21,6 @@ function NewProject({onAdd,onCancel}) {
             return
         }
 
-        console.log(enteredTitleValue,descValue,dueDatevalue);
-
         onAdd({
             title   : enteredTitleValue,
             description : descValue,
