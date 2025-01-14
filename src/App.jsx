@@ -97,10 +97,13 @@ function App() {
   
 
   return (
+    <>
+    <header className = "text-stone-900 text-3xl my-2 font-bold text-center">Project Manager</header>
     <main className = "h-screen my-8 flex gap-8">
-      <ProjectSidebar onSelectProject={handleSelectProject} onStartAddProjects = {handleStartAddProject} projects = {projectState.projects}/>
+      <ProjectSidebar onSelectProject={handleSelectProject} onStartAddProjects = {handleStartAddProject} projects = {projectState.projects} selectedProjectId={projectState.selectedProjectId}/>
       {content}
     </main>
+  </>
   );
 }
 

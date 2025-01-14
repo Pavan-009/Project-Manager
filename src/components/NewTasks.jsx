@@ -8,6 +8,9 @@ function NewTasks({onAddTask}) {
 
     function handleClick(){
         //forward entered value to parent component
+        if(enteredTask.trim() === ""){
+            return;
+        }
         onAddTask(enteredTask);
 
         //resetting the input element to empty string
